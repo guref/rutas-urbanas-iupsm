@@ -13,7 +13,7 @@ document.getElementById('btn-calcular').addEventListener('click', async () => {
     outputDiv.innerHTML = "<p>Procesando cálculo analítico y mallado topológico 2D...</p>";
 
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/calcular', {
+        const response = await fetch('/api/calcular', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
