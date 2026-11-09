@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cálculo de Rutas Mínimas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div style="text-align: center; margin-bottom: 25px;">
+    <!-- Logo Institucional Centrado -->
+    <img src="Logo iupsm maturin.jpg" alt="Logo IUPSM Maturín" style="width: 150px; height: 150px; object-fit: contain; margin-bottom: 10px;">
+    
+    <h1 style="margin: 0; color: #0c3254; font-size: 26px;">Simulador de Rutas Mínimas y Auditoría Algebraica</h1>
+    <p style="margin: 5px 0 0 0; color: #64748b; font-size: 14px;">Sistema Web para el Trabajo de Recuperación de Índice como requisito indispensable para optar al Título de
+Ingeniero de Sistemas</p>
+</div>
+
+    <main>
+        <section class="control-panel">
+            <h2>Panel de Parámetros</h2>
+            <div class="form-group">
+                <label for="algoritmo">Seleccionar Algoritmo:</label>
+                <select id="algoritmo">
+                    <option value="dijkstra">Dijkstra (Ruta Específica)</option>
+                    <option value="floyd">Floyd-Warshall (Matriz Global)</option>
+                </select>
+            </div>
+
+            <!-- Nuevo campo para ingreso dinámico de aristas y pesos -->
+            <div class="form-group">
+                <label for="grafo-input">Definición de Aristas (Origen, Destino, Peso):</label>
+                <textarea id="grafo-input" rows="5" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: monospace; font-size: 13px;" placeholder="Ejemplo:
+A, B, 120
+A, C, 250
+B, C, 90
+B, D, 400
+C, D, 150
+C, E, 300
+D, E, 200">A, B, 120
+A, C, 250
+B, C, 90
+B, D, 400
+C, D, 150
+C, E, 300
+D, E, 200</textarea>
+                <small style="color: #64748b; display: block; margin-top: 4px;">Formato: Origen, Destino, Distancia (una conexión por línea).</small>
+            </div>
+
+            <div class="form-group">
+                <label for="origen">Nodo Origen:</label>
+                <input type="text" id="origen" value="A">
+            </div>
+            <div class="form-group">
+                <label for="destino">Nodo Destino:</label>
+                <input type="text" id="destino" value="E">
+            </div>
+            <button id="btn-calcular">Procesar Cálculo y Auditoría</button>
+        </section>
+
+        <section class="results-panel">
+            <h3>Módulo de Resultados y Desglose</h3>
+            <div id="output-resultados">
+                <p>Configure los parámetros y presione procesar...</p>
+            </div>
+        </section>
+    </main>
+<footer style="text-align: center; margin-top: 40px; padding: 20px 0; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 14px;">
+    <p style="margin: 0; font-weight: 500;">Realizado por el Bachiller Felix Gure</p>
+    <p style="margin: 4px 0 0 0; font-size: 12px; color: #94a3b8;">Instituto Universitario Politécnico "Santiago Mariño" — Extensión Maturín</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

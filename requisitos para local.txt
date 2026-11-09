@@ -1,0 +1,2 @@
+Instala las librerías en tu terminal ejecutando:
+pip install flask flask-cors networkx numpy
