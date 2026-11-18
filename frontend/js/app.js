@@ -245,7 +245,7 @@ document.getElementById('btn-calcular').addEventListener('click', async () => {
             }
 
             htmlContent += `<div style="margin-top: 25px; text-align: center;" class="no-print">`;
-            htmlContent += `<button onclick="window.print()" style="background-color: #0f172a; width: auto; padding: 12px 25px;">🖨️ Imprimir / Generar Reporte Académico Formal</button>`;
+            htmlContent += `<button onclick="window.print()" style="background-color: #ffffff; width: auto; padding: 12px 25px;">🖨️ Imprimir / Generar Reporte Académico Formal</button>`;
             htmlContent += `</div>`;
 
             outputDiv.innerHTML = htmlContent;
@@ -256,4 +256,61 @@ document.getElementById('btn-calcular').addEventListener('click', async () => {
         outputDiv.innerHTML = `<p style="color: red;">No se pudo conectar con el servidor backend en Flask.</p>`;
         console.error(error);
     }
+});
+
+// Función añadida para manejar la consulta del historial de SQLite incluyendo la columna de aristas
+document.getElementById('btn-historial').addEventListener('click', async () => {
+    const outputDiv = document.getElementById('output-resultados');
+    outputDiv.innerHTML = "<p>Consultando registros de auditoría y configuración de aristas en SQLite...</p>";
+
+    try {
+        const res = await fetch('/api/historial');
+        const data = await res.json();
+
+        if (data.success) {
+            if (data.historial.length === 0) {
+                outputDiv.innerHTML = "<p>No hay registros almacenados en la base de datos todavía.</p>";
+                return;
+            }
+
+            let tabla = `<h3>Auditoría de Ejecuciones (Historial SQLite con Aristas)</h3>`;
+            tabla += `<table class="auditoria-tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Algoritmo</th>
+                        <th>Configuración de Aristas (Red)</th>
+                        <th>Distancia Total</th>
+                        <th>Fecha y Hora</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+            data.historial.forEach(r => {
+                tabla += `<tr>
+                    <td>${r.id}</td>
+                    <td><strong>${r.origen}</strong></td>
+                    <td><strong>${r.destino}</strong></td>
+                    <td>${r.algoritmo}</td>
+                    <td><code style="font-size: 11px; color: #0f172a; word-break: break-all;">${r.aristas}</code></td>
+                    <td>${r.distancia} m</td>
+                    <td>${r.fecha}</td>
+                </tr>`;
+            });
+
+            tabla += `</tbody></table>`;
+            outputDiv.innerHTML = tabla;
+        } else {
+            outputDiv.innerHTML = `<p style="color: red;">Error al consultar historial: ${data.error}</p>`;
+        }
+    } catch (error) {
+        outputDiv.innerHTML = `<p style="color: red;">No se pudo conectar con el servidor para obtener el historial.</p>`;
+        console.error(error);
+    }
+    // Evento para descargar el banco de ejercicios e historial en formato Excel
+document.getElementById('btn-excel').addEventListener('click', () => {
+    window.location.href = '/api/exportar-excel';
+});
 });
