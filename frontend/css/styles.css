@@ -1,39 +1,59 @@
+:root {
+    --primary-navy: #09203f;
+    --navy-hover: #051226;
+    --navy-light: #0c3254;
+    --accent-slate: #334155;
+    --success-green: #14532d;
+    --success-hover: #0f3e22;
+    --bg-main: #f4f6f9;
+    --card-bg: #ffffff;
+    --border-color: #cbd5e1;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8fafc;
-    color: #1e293b;
+    background-color: var(--bg-main);
+    color: var(--text-main);
     margin: 0;
-    padding: 20px;
+    padding: 25px;
+    -webkit-font-smoothing: antialiased;
 }
 
 header {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 header h1 {
-    color: #0f172a;
-    margin-bottom: 5px;
+    color: var(--primary-navy);
+    margin-bottom: 6px;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 header p {
-    color: #64748b;
-    font-size: 14px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 main {
     display: flex;
-    gap: 20px;
-    max-width: 1400px;
+    gap: 24px;
+    max-width: 1450px;
     margin: 0 auto;
     align-items: flex-start;
 }
 
 section {
-    background: #ffffff;
+    background: var(--card-bg);
     padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
 }
 
 .control-panel {
@@ -54,60 +74,105 @@ section {
     display: block;
     margin-bottom: 6px;
     font-weight: 600;
-    font-size: 14px;
-    color: #334155;
+    font-size: 13.5px;
+    color: var(--accent-slate);
 }
 
-.form-group input, .form-group select {
+.form-group input, .form-group select, .form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #cbd5e1;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 14px;
     box-sizing: border-box;
+    background-color: #ffffff;
+    color: var(--text-main);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-navy);
+    box-shadow: 0 0 0 3px rgba(9, 32, 63, 0.12);
+}
+
+/* --- ESTILOS PROFESIONALES DE BOTONES --- */
 button {
-    background-color: #03339b;
-    color: white;
     border: none;
-    padding: 12px 15px;
+    padding: 11px 16px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     width: 100%;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-button:hover {
-    background-color: #082138;
+/* Botón Principal (Cálculo y Auditoría) - Azul Marino del Logo */
+#btn-calcular {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    margin-top: 4px;
 }
 
-/* Tablas y Matrices */
+#btn-calcular:hover {
+    background-color: var(--navy-hover);
+    box-shadow: 0 4px 6px -1px rgba(9, 32, 63, 0.2);
+}
+
+/* Botón Secundario (Historial SQLite) - Gris Pizarra Ejecutivo */
+#btn-historial {
+    background-color: var(--accent-slate);
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+#btn-historial:hover {
+    background-color: #1e293b;
+    box-shadow: 0 4px 6px -1px rgba(51, 65, 85, 0.2);
+}
+
+/* Botón de Excel - Verde Académico / Corporativo */
+#btn-excel {
+    background-color: var(--success-green);
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+#btn-excel:hover {
+    background-color: var(--success-hover);
+    box-shadow: 0 4px 6px -1px rgba(20, 83, 45, 0.2);
+}
+
+/* --- TABLAS Y MATRICES --- */
 .matriz-container {
-    margin-bottom: 25px;
+    margin-bottom: 22px;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    border-radius: 6px;
     padding: 15px;
 }
 
 .matriz-container h5 {
     margin: 0 0 10px 0;
-    color: #1e293b;
-    font-size: 14px;
+    color: var(--text-main);
+    font-size: 13.5px;
 }
 
 .formula-algebraica {
-    background: #eff6ff;
-    border-left: 4px solid #3b82f6;
+    background: #f0f4f8;
+    border-left: 4px solid var(--primary-navy);
     padding: 10px 14px;
     margin: 10px 0;
     font-family: 'Courier New', Courier, monospace;
     font-size: 13px;
-    color: #1e3a8a;
-    border-radius: 0 6px 6px 0;
+    color: var(--primary-navy);
+    border-radius: 0 4px 4px 0;
 }
 
 table.matriz-tabla {
@@ -120,13 +185,13 @@ table.matriz-tabla {
 }
 
 table.matriz-tabla th, table.matriz-tabla td {
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border-color);
     padding: 8px;
 }
 
 table.matriz-tabla th {
     background-color: #e2e8f0;
-    color: #334155;
+    color: var(--accent-slate);
 }
 
 table.auditoria-tabla {
@@ -144,7 +209,8 @@ table.auditoria-tabla th, table.auditoria-tabla td {
 
 table.auditoria-tabla th {
     background-color: #f1f5f9;
-    color: #334155;
+    color: var(--accent-slate);
+    font-weight: 600;
 }
 
 /* Reglas para impresión limpia de tesis / defensa */
