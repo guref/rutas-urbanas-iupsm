@@ -14,6 +14,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
     background-color: var(--bg-main);
     color: var(--text-main);
     margin: 0;
@@ -29,13 +30,13 @@ header {
 header h1 {
     color: var(--primary-navy);
     margin-bottom: 6px;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
 }
 
 header p {
     color: var(--text-muted);
-    font-size: 13.5px;
+    font-size: 16px;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -74,7 +75,7 @@ section {
     display: block;
     margin-bottom: 6px;
     font-weight: 600;
-    font-size: 13.5px;
+    font-size: 16px;
     color: var(--accent-slate);
 }
 
@@ -83,7 +84,7 @@ section {
     padding: 10px 12px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 16px;
     box-sizing: border-box;
     background-color: #ffffff;
     color: var(--text-main);
@@ -102,7 +103,7 @@ button {
     padding: 11px 16px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     width: 100%;
     transition: all 0.2s ease;
@@ -161,7 +162,7 @@ button {
 .matriz-container h5 {
     margin: 0 0 10px 0;
     color: var(--text-main);
-    font-size: 13.5px;
+    font-size: 16px;
 }
 
 .formula-algebraica {
@@ -170,7 +171,7 @@ button {
     padding: 10px 14px;
     margin: 10px 0;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 13px;
+    font-size: 16px;
     color: var(--primary-navy);
     border-radius: 0 4px 4px 0;
 }
@@ -180,7 +181,7 @@ table.matriz-tabla {
     border-collapse: collapse;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 13px;
+    font-size: 16px;
     background: #ffffff;
 }
 
@@ -198,7 +199,7 @@ table.auditoria-tabla {
     width: 100%;
     border-collapse: collapse;
     margin-top: 12px;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 table.auditoria-tabla th, table.auditoria-tabla td {
@@ -213,14 +214,42 @@ table.auditoria-tabla th {
     font-weight: 600;
 }
 
+/* --- LEGIBILIDAD REFORZADA EN RESULTADOS Y ECUACIONES (18px) --- */
+#output-resultados,
+#output-resultados p,
+#output-resultados li,
+#output-resultados span,
+#output-resultados small,
+#output-resultados code,
+#output-resultados pre,
+.formula-algebraica {
+    font-size: 18px !important;
+    line-height: 1.5;
+}
+
+#output-resultados code,
+#output-resultados pre,
+.formula-algebraica {
+    font-family: 'Courier New', Courier, monospace !important;
+    font-weight: 600;
+    padding: 12px 16px;
+}
+
+#output-resultados h4,
+#output-resultados h5,
+.matriz-container h5 {
+    font-size: 20px !important;
+}
+
 /* Reglas para impresión limpia de tesis / defensa */
 @media print {
     body {
         background: #ffffff !important;
         color: #000000 !important;
         padding: 0 !important;
+        font-size: 16px !important;
     }
-    
+
     .control-panel, .no-print, button {
         display: none !important;
     }
